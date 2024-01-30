@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint --ignore-path ./configs/eslint/.eslintignore -c ./configs/eslint/.eslintrc.js ./src",
-    "lint:fix": "npx eslint --ignore-path ./configs/eslint/.eslintignore -c ./configs/eslint/.eslintrc.js --fix ./src",
-    "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore -c ./configs/prettier/.prettierrc",
-    "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore -c ./configs/prettier/.prettierrc",
+    "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.js",
+    "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.js --fix",
+    "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
+    "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
     "format": "npm run prettier:fix && npm run lint:fix",
     "prepare": "husky"
   },

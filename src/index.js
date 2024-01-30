@@ -16,7 +16,7 @@
 export default function pattern(n) {
   // not a number, not a integer or less than 1 => ''
   if (n < 1 || !Number.isInteger(n) || !Number.isFinite(n)) {
-    return "";
+    return '';
   }
 
   // pattern new Array(3).fill(1).map((elem, index) => elem + index) =>
@@ -25,5 +25,5 @@ export default function pattern(n) {
     .fill(1)
     .map((num, index) => num + index)
     .map((num, index) => String(num).repeat(index + 1))
-    .join("\n");
+    .join('\n');
 }

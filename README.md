@@ -2,6 +2,12 @@
 
 It's a boilerplate for usage of `eslint`, `prettier` and `husky` (with `commit-msg and pre-commit hooks`) in a future project. Check out the docs below to be in `actual tune`!
 
+ESLint is turned to use Airbnb-Base config and Prettier config. (check out the `./configs/eslint/.eslintrc.js` file);
+
+Prettier is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/.prettierrc` file);
+
+Commitlint is turned to the `conventional` set usage, but `'header-max-length': [2, 'always', 200]` rule is set commit header length up to 200 characters max. Also the `'type-enum'` ruleset includes `init` type (check out the `./configs/commitlint/commitlint.config.js` file);
+
 `Important!!! Before usage, check the actuality of the scripts and settings by links below!!! The currents one could be outdated.`
 
 ### The boilerplate structure and brief descriptions:
@@ -23,6 +29,8 @@ It's a boilerplate for usage of `eslint`, `prettier` and `husky` (with `commit-m
 
 - [ESlint official documentation](https://eslint.org/docs/latest/) Changes with ESlint v9.0.0 coming soon! (flat config, ES modules). TODO! Change the eslintrc.js => eslint.config.js and dig deeper!
 - [VS Code ESLint extension by Microsoft](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [eslint-config-airbnb-base by airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
+- [eslint-config-prettier by prettier](https://github.com/prettier/eslint-config-prettier)
 
 - [Prettier official documentation](https://prettier.io/docs/en/) TODO! Changes coming soon, check the prettier configs.
 - [Prettier Formatter for Visual Studio Code by Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)

@@ -1,5 +1,5 @@
 {
-  "name": "eslint-prettier-husky-boilerplate",
+  "name": "boilerplate-eslint-prettier-husky",
   "version": "1.0.0",
   "description": "It's a boilerplate for usage of eslint, prettier and husky (with hooks) in a future project. Check out the docs below to be in actual tune!",
   "main": "index.js",

@@ -4,7 +4,7 @@ It's a boilerplate for usage of `eslint`, `prettier` and `husky` (with `commit-m
 
 ESLint is turned to use Airbnb-Base config and Prettier config. (check out the `./configs/eslint/.eslintrc.js` file);
 
-Prettier is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/.prettierrc` file). For only `.html` files `"printWidth"` rule set to `180` to prevent unnecessary splitting attributes onto multiple lines (check the [How do you stop Prettier in VS code splitting attributes onto multiple lines? stackoverflow.com](https://stackoverflow.com/questions/56291245/how-do-you-stop-prettier-in-vs-code-splitting-attributes-onto-multiple-lines) for details);
+Prettier is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/.prettierrc` file). For only `.html` files `"printWidth"` rule set to `160` (twice as default `80`) to prevent unnecessary splitting attributes onto multiple lines (check the [How do you stop Prettier in VS code splitting attributes onto multiple lines? stackoverflow.com](https://stackoverflow.com/questions/56291245/how-do-you-stop-prettier-in-vs-code-splitting-attributes-onto-multiple-lines) for details);
 
 Commitlint is turned to the `conventional` set usage, but `'header-max-length': [2, 'always', 200]` rule is set commit header length up to 200 characters max. Also the `'type-enum'` ruleset includes `init` type (check out the `./configs/commitlint/commitlint.config.js` file);
 
@@ -41,4 +41,4 @@ Commitlint is turned to the `conventional` set usage, but `'header-max-length': 
 
 - [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint)
 
-#### created: January 30, 2024
+#### done: February 04, 2024

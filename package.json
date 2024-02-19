@@ -21,10 +21,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dmitriy-Frostoff/eslint-prettier-husky-boilerplate.git"
+    "url": "git+https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky.git"
   },
   "author": "Dmitriy Frostoff",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky/issues"
+  },
+  "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky#readme",
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
@@ -33,9 +37,5 @@
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.10",
     "prettier": "^3.2.5"
-  },
-  "bugs": {
-    "url": "https://github.com/Dmitriy-Frostoff/eslint-prettier-husky-boilerplate/issues"
-  },
-  "homepage": "https://github.com/Dmitriy-Frostoff/eslint-prettier-husky-boilerplate#readme"
+  }
 }

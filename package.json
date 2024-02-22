@@ -1,11 +1,12 @@
 {
   "name": "boilerplate-eslint-prettier-husky",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "It's a boilerplate for usage of eslint, prettier and husky (with hooks) in a future project. Check out the docs below to be in actual tune!",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.js",
-    "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.js --fix",
+    "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs",
+    "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs --fix",
     "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
     "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
     "format": "npm run prettier:fix && npm run lint:fix",

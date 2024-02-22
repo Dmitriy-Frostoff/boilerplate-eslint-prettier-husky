@@ -2,7 +2,9 @@
 
 It's a boilerplate for usage of `eslint`, `prettier` and `husky` (with `commit-msg and pre-commit hooks`) in a future project. Check out the docs below to be in `actual tune`!
 
-`ESLint` is turned to use `Airbnb-Base config` and `Prettier config`. (check out the `./configs/eslint/.eslintrc.js` file);
+A future project is considered to use `ESM` (check the property `type: module` in the `package.json` file).
+
+`ESLint` is turned to use `Airbnb-Base config` and `Prettier config`. (check out the `./configs/eslint/.eslintrc.cjs` file. Also take a glance at [Must use import to load ES Module .eslintrc.js](https://stackoverflow.com/questions/70487806/must-use-import-to-load-es-module-eslintrc-js) because `ESlint` is not fully support `ESM` now);
 
 `Prettier` is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/.prettierrc` file). For only `.html` files `"printWidth"` rule set to `160` (twice as default `80`) to prevent unnecessary splitting attributes onto multiple lines (check the [How do you stop Prettier in VS code splitting attributes onto multiple lines? stackoverflow.com](https://stackoverflow.com/questions/56291245/how-do-you-stop-prettier-in-vs-code-splitting-attributes-onto-multiple-lines) for details);
 
@@ -29,7 +31,7 @@ It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format
 
 - [Using Prettier and ESLint to automate formatting and fixing JavaScript by Rob O'Leary (Feb 11, 2022)](https://blog.logrocket.com/using-prettier-eslint-automate-formatting-fixing-javascript/)
 
-- [ESlint official documentation](https://eslint.org/docs/latest/) Changes with ESlint v9.0.0 coming soon! (flat config, ES modules). TODO! Change the eslintrc.js => eslint.config.js and dig deeper!
+- [ESlint official documentation](https://eslint.org/docs/latest/) Changes with ESlint v9.0.0 coming soon! (flat config, ES modules). TODO! Change then the `eslintrc.cjs` => `eslint.config.js` and dig deeper using Docs!
 - [VS Code ESLint extension by Microsoft](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [eslint-config-airbnb-base by airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
 - [eslint-config-prettier by prettier](https://github.com/prettier/eslint-config-prettier)

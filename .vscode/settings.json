@@ -8,7 +8,7 @@
   "vetur.validation.template": false,
   // ESLint settings
   "eslint.options": {
-    "overrideConfigFile": "./configs/eslint/.eslintrc.js",
+    "overrideConfigFile": "./configs/eslint/.eslintrc.cjs",
     "ignorePath": "./configs/eslint/.eslintignore"
   },
   // Prettier settings

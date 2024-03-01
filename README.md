@@ -18,9 +18,9 @@ It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format
 
 - `.husky` - folder for husky's hooks (with hooks config);
 - `.vscode/settings.json` - settings for appropraite work of the `ESlint` and `Prettier` VSCode extensions in a project (with a help of `Format Code Action` extension). There're settings and scripts for a usage of the configs (and ignore) files in the project (i.e. links to ones config files);
-- `configs/` - the folder includes config and ignore files for: `ESlint`, `Prettier`, `Commitlint` packages. Currently about ignore files: only `node_modules` are ignored;
+- `configs/` - the folder includes config and ignore files for: `ESlint`, `Prettier`, `Commitlint` packages. Currently about ignore files: `node_modules` and a few more folders are ignored (check `.gitignore` file);
 - `src/` - source folder for a future project;
-- `.gitignore` - exlude `node_modules` from git watching;
+- `.gitignore` - exlude `node_modules` and a few more folders from git watching (like `dist` etc, check the file for more);
 - `LICENSE` - license file;
 - `package.json` - the heart of all.
   Check the scripts (especially, the pathes for linting/prettier'ing. Currently: `'./src'`). Scripts already have CLI prefixes to link with config and ignore files;
@@ -45,4 +45,4 @@ It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format
 
 - [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint)
 
-#### done: February 22, 2024
+#### done: March 01, 2024

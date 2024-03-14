@@ -15,7 +15,7 @@ It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format
 
 `Commitlint` is turned to the `conventional` set usage, but `'header-max-length': [2, 'always', 200]` rule is set commit header length up to 200 characters max. Also the `'type-enum'` ruleset includes `init` type (check out the `./configs/commitlint/commitlint.config.js` file);
 
-`TypeScript` is also supported by the stuff above. There's a `TS` config file (`configs/ts/tsconfig.json`).
+`TypeScript` is also supported by the stuff above. There's a `TS` config file (`configs/ts/tsconfig.json`) and types declaration for `TS` (`configs/ts/global.d.ts`) to handle imported assets files (e.g. `.svg`, `.html`, `scss`, `css` etc).
 
 ---
 

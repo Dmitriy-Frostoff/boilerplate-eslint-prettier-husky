@@ -78,6 +78,7 @@ in the `"include"` (pathes are relative to the `tsconfig.json` file!):
 
 ```ts
 [
+  './',
   '../../src/**/*.ts',
   '../../src/**/*.js',
   '../../tests/**/*.ts',
@@ -147,7 +148,6 @@ Check the file for details (descriptions are inside).
 - [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint/blob/main/README.md#using-eslint-to-validate-typescript-files)
 - ["parserOptions.project" has been set for @typescript-eslint/parser](https://stackoverflow.com/questions/58510287/parseroptions-project-has-been-set-for-typescript-eslint-parser)
 - [About the TypeScript config options](https://www.typescriptlang.org/tsconfig)
-- [About the TypeScript config options](https://www.typescriptlang.org/tsconfig)
 - [About the TypeScript tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 
 #### ESLint:
@@ -175,4 +175,4 @@ Check the file for details (descriptions are inside).
 
 - [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint)
 
-#### done: March 12, 2024
+#### done: March 15, 2024

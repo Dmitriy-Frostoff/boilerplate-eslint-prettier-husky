@@ -63,16 +63,7 @@ If you're out of tending to use the `TS` so step the following moves:
   }
 ```
 
-`tsconfig.json` is containing particularly default settings despite the below ones:
-in the `"compilerOptions"`:
-
-- `"target": "ESNext"`,
-- `"module": "ESNext"`,
-- `"esModuleInterop": true`,
-- `"forceConsistentCasingInFileNames": true`,
-- `"strict": true`,
-- `"noImplicitAny": true`,
-- `"skipLibCheck": true`,
+`tsconfig.json` is containing particularly default settings despite the chosen ones (check the file for more).
 
 in the `"include"` (pathes are relative to the `tsconfig.json` file!):
 
@@ -175,4 +166,4 @@ Check the file for details (descriptions are inside).
 
 - [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint)
 
-#### done: March 15, 2024
+#### done: March 20, 2024

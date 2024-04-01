@@ -112,8 +112,10 @@ Check the file for details (descriptions are inside).
 ### The boilerplate structure and brief descriptions:
 
 - `.husky` - folder for husky's hooks (with hooks config);
-- `.vscode/settings.json` - settings for appropraite work of the `ESlint` and `Prettier` VSCode extensions in a project (with a help of `Format Code Action` extension). There're settings and scripts for a usage of the configs (and ignore) files in the project (i.e. links to ones config files);
+- `.vscode/settings.json` - settings for appropraite work of the `ESlint` and `Prettier` VSCode extensions in a project (with a help of `Format Code Action` extension). There're settings and scripts for a usage of the configs (and ignore) files in the project (i.e. links to ones config files) and there's `end-of-line(EOF)` property that is set to `LF` (i.e. `"files.eol": "\n"`);
 - `configs/` - the folder includes config and ignore files for: `ESlint`, `Prettier`, `Commitlint` and `TypeScript` packages. Currently about ignore files: `node_modules` and a few more folders are ignored (check `.gitignore` file);
+- `.editorconfig` - the project common settings (as for now it's as in RSSChool recommended check the [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) for more.  
+  **notice**: `EditorConfig` extension required!);
 - `src/` - source folder for a future project;
 - `.gitignore` - exlude `node_modules` and a few more folders from git watching (like `dist` etc, check the file for more);
 - `LICENSE` - license file;

@@ -22,5 +22,6 @@
   // Prettier settings
   "prettier.configPath": "./configs/prettier/.prettierrc",
   "prettier.ignorePath": "./configs/prettier/.prettierignore",
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "files.eol": "\n"
 }

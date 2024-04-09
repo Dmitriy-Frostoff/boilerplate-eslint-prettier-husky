@@ -15,10 +15,11 @@ module.exports = {
     browser: true,
     node: true,
     es2024: true,
-    mocha: true,
-    jest: true,
   },
-  extends: ['airbnb-base', 'prettier'],
+  parserOptions: {
+    sourceType: 'module',
+  },
+  extends: ['eslint:recommended'],
   overrides: [
     {
       env: {
@@ -30,19 +31,53 @@ module.exports = {
       },
     },
     {
-      files: ['*.ts', '*.tsx'],
-      extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
+      files: ['*.js'],
+      extends: ['airbnb-base', 'prettier'],
+    },
+    {
+      files: ['*.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-base',
+        'airbnb-typescript/base',
+        'prettier',
+      ],
+      plugins: ['@typescript-eslint'],
       parserOptions: {
+        parser: '@typescript-eslint/parser',
         project: path.resolve(__dirname, '../ts/tsconfig.json'),
+        ecmaVersion: 'latest',
+      },
+    },
+    {
+      env: {
+        mocha: true,
+        jest: true,
+      },
+      files: ['**/*.test.js'],
+      extends: ['airbnb-base', 'prettier'],
+    },
+    {
+      env: {
+        mocha: true,
+        jest: true,
+      },
+      files: ['**/*.test.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-base',
+        'airbnb-typescript/base',
+        'prettier',
+      ],
+      plugins: ['@typescript-eslint'],
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: path.resolve(__dirname, '../ts/tsconfig.json'),
+        ecmaVersion: 'latest',
       },
     },
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 15,
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint'],
   rules: {},
   noInlineConfig: true,
+  reportUnusedDisableDirectives: true,
 };

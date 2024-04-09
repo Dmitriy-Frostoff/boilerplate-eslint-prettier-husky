@@ -4,7 +4,10 @@ It's a boilerplate for usage of `eslint`, `prettier` and `husky` (with `commit-m
 
 A future project is considered to use `ESM` (check the property `type: module` in the `package.json` file).
 
-`ESLint` is turned to use `Airbnb-Base config` (for `TS`: `"eslint-config-airbnb-typescript"`, `"@typescript-eslint/eslint-plugin"`, `"@typescript-eslint/parser"`) and `Prettier config`. (check out the `./configs/eslint/.eslintrc.cjs` file.
+`ESLint` is turned to use `eslint:recommended` (as default recommended),  
+`Airbnb-Base config` (`eslint-config-airbnb-base`) as primary (for `TS`: `"eslint-config-airbnb-typescript"`, `"@typescript-eslint/eslint-plugin"`, `"@typescript-eslint/parser"`, `'plugin:@typescript-eslint/recommended'`),  
+`eslint-plugin-import` (`eslint-config-airbnb` require it) and  
+`Prettier config`. (check out the `./configs/eslint/.eslintrc.cjs` file.
 
 Also take a glance at [Must use import to load ES Module .eslintrc.js](https://stackoverflow.com/questions/70487806/must-use-import-to-load-es-module-eslintrc-js) because `ESlint` is not fully support `ESM` now and pay attention to the method of resolving URL of the `tsconfig.json` (i.e. `project: path.resolve(__dirname, '../ts/tsconfig.json'`)).  
 **For `ESM config` this will be going to be changed;**
@@ -31,20 +34,44 @@ If you're out of tending to use the `TS` so step the following moves:
 
   ```js
     {
-      files: ['*.ts', '*.tsx'],
-      extends: ['airbnb-base', 'airbnb-typescript/base', 'prettier'],
+      files: ['*.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-base',
+        'airbnb-typescript/base',
+        'prettier',
+      ],
+      plugins: ['@typescript-eslint'],
       parserOptions: {
+        parser: '@typescript-eslint/parser',
         project: path.resolve(__dirname, '../ts/tsconfig.json'),
+        ecmaVersion: 'latest',
+      },
+    },
+    ...
+
+    {
+      env: {
+        mocha: true,
+        jest: true,
+      },
+      files: ['**/*.test.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'airbnb-base',
+        'airbnb-typescript/base',
+        'prettier',
+      ],
+      plugins: ['@typescript-eslint'],
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: path.resolve(__dirname, '../ts/tsconfig.json'),
+        ecmaVersion: 'latest',
       },
     },
 
   ...
 
-    parser: '@typescript-eslint/parser',
-
-  ...
-
-    plugins: ['@typescript-eslint'],
   ```
 
 - delete `"tsc": "npx tsc -p configs/ts/tsconfig.json"` in the `package.json` => `scripts`.
@@ -97,7 +124,7 @@ To transpile all the `.ts` files run the `npx tsc -p configs/ts/tsconfig.json`, 
 or
 
 ```bash
-  npm run tsc
+npm run tsc
 ```
 
 (**note:** `tsc` in the command above is the name of the script in the `package.json`, feel free to rename it what ever you like).
@@ -128,44 +155,60 @@ Check the file for details (descriptions are inside).
 
 #### VSCode usage' links:
 
-- [Using Prettier and ESLint to automate formatting and fixing JavaScript by Rob O'Leary (Feb 11, 2022)](https://blog.logrocket.com/using-prettier-eslint-automate-formatting-fixing-javascript/)
+- [Using Prettier and ESLint to automate formatting and fixing JavaScript by Rob O'Leary (Feb 11, 2022)](https://blog.logrocket.com/using-prettier-eslint-automate-formatting-fixing-javascript/);
 
 #### TypeScript:
 
-- [The official website of the TypeScript](https://www.typescriptlang.org/)
-- [The official github of the TypeScript](https://github.com/microsoft/TypeScript)
-- [Linting in TypeScript using ESLint and Prettier by Paul Ccari (Sep 26, 2023)](https://blog.logrocket.com/linting-typescript-eslint-prettier/)
-- [eslint-config-airbnb-typescript at npmjs.com](https://www.npmjs.com/package/eslint-config-airbnb-typescript)
-- [The official github of the eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript?tab=readme-ov-file)
-- [Example of the .eslintrc.js by Matt Turnbull(iamturns)](https://github.com/iamturns/create-exposed-app/blob/master/.eslintrc.js)
-- [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint/blob/main/README.md#using-eslint-to-validate-typescript-files)
-- ["parserOptions.project" has been set for @typescript-eslint/parser](https://stackoverflow.com/questions/58510287/parseroptions-project-has-been-set-for-typescript-eslint-parser)
-- [About the TypeScript config options](https://www.typescriptlang.org/tsconfig)
-- [About the TypeScript tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [The official website of the TypeScript](https://www.typescriptlang.org/);
+- [The official github of the TypeScript](https://github.com/microsoft/TypeScript);
+- [Linting in TypeScript using ESLint and Prettier by Paul Ccari (Sep 26, 2023)](https://blog.logrocket.com/linting-typescript-eslint-prettier/);
+- [Example of the .eslintrc.js by Matt Turnbull(iamturns)](https://github.com/iamturns/create-exposed-app/blob/master/.eslintrc.js);
+- [VS Code ESLint extension](https://github.com/microsoft/vscode-eslint/blob/main/README.md#using-eslint-to-validate-typescript-files);
+- ["parserOptions.project" has been set for @typescript-eslint/parser](https://stackoverflow.com/questions/58510287/parseroptions-project-has-been-set-for-typescript-eslint-parser);
+- [About the TypeScript config options](https://www.typescriptlang.org/tsconfig);
+- [About the TypeScript tsc CLI Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html);
+- [Files with the same name (without extensions) are not parsable](https://github.com/typescript-eslint/typescript-eslint/issues/955);
+- [The official page of tsx at npmjs.com](https://www.npmjs.com/package/tsx);
+- [The official GitHub repository of tsx](https://github.com/privatenumber/tsx);
 
 #### ESLint:
 
-- [ESlint official documentation](https://eslint.org/docs/latest/)  
+- [ESlint official documentation](https://eslint.org/docs/latest/);  
   Changes with ESlint v9.0.0 coming soon! (flat config, ES modules).  
    TODO! Change then the `eslintrc.cjs` => `eslint.config.js` and dig deeper using Docs!
-- [VS Code ESLint extension by Microsoft](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [eslint-config-airbnb-base by airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
-- [eslint-config-prettier by prettier](https://github.com/prettier/eslint-config-prettier)
+- [VS Code ESLint extension by Microsoft](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint);
+- [eslint rules recommended](https://eslint.org/docs/latest/rules/);
+- [eslint-config-airbnb-base by airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base);
+- [eslint-config-airbnb-typescript at npmjs.com](https://www.npmjs.com/package/eslint-config-airbnb-typescript);
+- [The official github of the eslint-config-airbnb-typescript](https://github.com/iamturns/eslint-config-airbnb-typescript?tab=readme-ov-file);
+- [The official website of typescript-eslint](https://typescript-eslint.io/);
+- [The official github of the typescript-eslint](https://github.com/typescript-eslint/typescript-eslint);
+- [@typescript-eslint/eslint-plugin at npmjs.com](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin);  
+  **note**: deprecated now! Check the typescript-eslint Setup for actual one.
+- [@typescript-eslint/parser at npmjs.com](https://www.npmjs.com/package/@typescript-eslint/parser);  
+  **note**: deprecated now! Check the typescript-eslint Setup for actual one.
+- [Actual typescript-eslint Setup](https://typescript-eslint.io/getting-started/);
+- [Legacy typescript-eslint Setup](https://typescript-eslint.io/getting-started/legacy-eslint-setup/);
+- [plugin:@typescript-eslint/recommended rules](https://typescript-eslint.io/rules/);
+- [the official page of eslint-plugin-import at npmjs.com](https://www.npmjs.com/package/eslint-plugin-import);
+- [the official github repo of eslint-plugin-import](https://github.com/import-js/eslint-plugin-import);
+- [eslint-config-prettier by prettier](https://github.com/prettier/eslint-config-prettier);
+- [In an eslint config, do 'extends' in an 'overrides' replace or do they merge with 'extends' up in the main section?](https://github.com/eslint/eslint/discussions/17174);
 
 #### Prettier:
 
-- [Prettier official documentation](https://prettier.io/docs/en/)
-  TODO! Changes coming soon, check the prettier configs.
-- [Prettier Formatter for Visual Studio Code by Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Prettier official documentation](https://prettier.io/docs/en/);
+  TODO! Changes coming soon, check the prettier configs;
+- [Prettier Formatter for Visual Studio Code by Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode);
 
 #### Husky:
 
-- [Husky official documentation](https://typicode.github.io/husky/)  
+- [Husky official documentation](https://typicode.github.io/husky/);  
   Changes coming soon! New features will take place.
   TODO! Change the husky and commitlint configs!
 
-- [Commitlint official documentation](https://commitlint.js.org/#/)
+- [Commitlint official documentation](https://commitlint.js.org/#/);
 
-- [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint)
+- [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint);
 
-#### done: March 20, 2024
+#### done: April 10, 2024

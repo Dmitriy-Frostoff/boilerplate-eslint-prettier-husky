@@ -108,9 +108,10 @@
   },
   "include": [
     "./",
-    "../../projectName/src/**/*.ts",
     "../../src/**/*.ts",
     "../../src/**/*.js",
+    "../../projectName/src/**/*.ts",
+    "../../projectName/src/**/*.js",
     "../../tests/**/*.ts",
     "../../tests/**/*.js",
     "../../*.ts",

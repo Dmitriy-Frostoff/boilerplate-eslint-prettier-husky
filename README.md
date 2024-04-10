@@ -22,11 +22,12 @@ It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format
 
 ---
 
-**!Important**
+### !Important
+
 If you're out of tending to use the `TS` so step the following moves:
 
 ```bash
-  npm uninstall typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript
+npm uninstall typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript
 ```
 
 - delete the `configs/ts` folder;
@@ -99,6 +100,8 @@ in the `"include"` (pathes are relative to the `tsconfig.json` file!):
   './',
   '../../src/**/*.ts',
   '../../src/**/*.js',
+  '../../projectName/src/**/*.ts',
+  '../../projectName/src/**/*.js',
   '../../tests/**/*.ts',
   '../../tests/**/*.js',
   '../../*.ts',
@@ -149,7 +152,38 @@ Check the file for details (descriptions are inside).
 - `package.json` - the heart of all.
   Check the scripts (especially, the pathes for linting/prettier'ing. Currently: `'./src'`). Scripts already have CLI prefixes to link with config and ignore files;
 
-  **With the new packages releases, the ones above can turn to pumpkin, so check'em out with official docs!!!**
+### Integration with [`Connections`](#Connections) links:
+
+To integrate the boilerplate do the following steps (**note**: copy the project structure as is!!!):
+
+- add the following lines to the `package.json`:
+
+```json
+...
+"type": "module",
+"scripts": {
+  "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs",
+  "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs --fix",
+  "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
+  "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
+  "format": "npm run prettier:fix && npm run lint:fix",
+  "prepare": "husky",
+  "tsc": "npx tsc -p configs/ts/tsconfig.json"
+},
+...
+```
+
+- copy the `.husky`, `.vscode`, `configs`, `.editorconfig`, `.gitignore` (optionally);
+
+- install current packages as `devDependencies` via bash command below:
+
+```bash
+npm i -D @commitlint/cli @commitlint/config-conventional @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb-base eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import husky prettier typescript
+```
+
+- do all the steps from the top of the document's [# !Important](#!Important) (i.e. rename `projectName`, delete unnecessary files, check and correct the `tsconfig.json` 's property `"include": []` to have actual(!) right passes not to be like `'../../projectName/src/**/*.ts','../../projectName/src/**/*.js'` (!!!));
+
+**With the new packages releases, the ones above can turn to pumpkin, so check'em out with official docs!!!**
 
 ### Links:
 
@@ -211,4 +245,10 @@ Check the file for details (descriptions are inside).
 
 - [conventional-changelog official documentation for validating commit messages (code worldwide usaging keywords)](/https://github.com/conventional-changelog/commitlint);
 
-#### done: April 10, 2024
+#### Connections:
+
+- [boilerplate-jest](https://github.com/Dmitriy-Frostoff/boilerplate-jest);
+- [boilerplate-webpack-gulp-html-scss-js-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components);
+- [boilerplate-webpack-gulp-html-scss-ts-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-ts-components);
+
+#### done: April 11, 2024

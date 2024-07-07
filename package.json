@@ -7,8 +7,8 @@
   "scripts": {
     "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs",
     "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs --fix",
-    "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
-    "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
+    "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/prettier.config.js",
+    "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/prettier.config.js",
     "format": "npm run prettier:fix && npm run lint:fix",
     "prepare": "husky",
     "tsc": "npx tsc -p configs/ts/tsconfig.json"

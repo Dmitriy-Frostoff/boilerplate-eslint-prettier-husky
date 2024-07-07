@@ -12,7 +12,7 @@ A future project is considered to use `ESM` (check the property `type: module` i
 Also take a glance at [Must use import to load ES Module .eslintrc.js](https://stackoverflow.com/questions/70487806/must-use-import-to-load-es-module-eslintrc-js) because `ESlint` is not fully support `ESM` now and pay attention to the method of resolving URL of the `tsconfig.json` (i.e. `project: path.resolve(__dirname, '../ts/tsconfig.json'`)).  
 **For `ESM config` this will be going to be changed;**
 
-`Prettier` is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/.prettierrc` file). For only `.html` files `"printWidth"` rule set to `160` (twice as default `80`) to prevent unnecessary splitting attributes onto multiple lines (check the [How do you stop Prettier in VS code splitting attributes onto multiple lines? stackoverflow.com](https://stackoverflow.com/questions/56291245/how-do-you-stop-prettier-in-vs-code-splitting-attributes-onto-multiple-lines) for details);
+`Prettier` is turned to use particularly default settings despite the `"singleQuote": true` (check out the `./configs/prettier/prettier.config.js` file). For only `.html` files `"printWidth"` rule set to `160` (twice as default `80`) to prevent unnecessary splitting attributes onto multiple lines (check the [How do you stop Prettier in VS code splitting attributes onto multiple lines? stackoverflow.com](https://stackoverflow.com/questions/56291245/how-do-you-stop-prettier-in-vs-code-splitting-attributes-onto-multiple-lines) for details);
 
 It's preffered to use `Visual Studio Code` with `ESlint`, `Prettier` and `Format Code Action` extensions (theirs settings are at `.vscode/settings.json` for a current project only. Check [Using Prettier and ESLint to automate formatting and fixing JavaScript by Rob O'Leary (Feb 11, 2022)](https://blog.logrocket.com/using-prettier-eslint-automate-formatting-fixing-javascript/) and [vscode-eslint github](https://github.com/microsoft/vscode-eslint/blob/main/README.md) for details);
 
@@ -164,8 +164,8 @@ To integrate the boilerplate do the following steps (**note**: copy the project 
 "scripts": {
   "lint": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs",
   "lint:fix": "npx eslint ./src --ignore-path ./configs/eslint/.eslintignore --config ./configs/eslint/.eslintrc.cjs --fix",
-  "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
-  "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/.prettierrc",
+  "prettier": "npx prettier ./src --check --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/prettier.config.js",
+  "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/prettier.config.js",
   "format": "npm run prettier:fix && npm run lint:fix",
   "prepare": "husky",
   "tsc": "npx tsc -p configs/ts/tsconfig.json"
@@ -251,4 +251,4 @@ npm i -D @commitlint/cli @commitlint/config-conventional @typescript-eslint/esli
 - [boilerplate-webpack-gulp-html-scss-js-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components);
 - [boilerplate-webpack-gulp-html-scss-ts-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-ts-components);
 
-#### done: April 11, 2024
+#### done: July 07, 2024

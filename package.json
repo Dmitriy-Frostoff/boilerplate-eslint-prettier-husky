@@ -11,7 +11,8 @@
     "prettier:fix": "npx prettier ./src --write --ignore-path ./configs/prettier/.prettierignore --config ./configs/prettier/prettier.config.js",
     "format": "npm run prettier:fix && npm run lint:fix",
     "prepare": "husky",
-    "tsc": "npx tsc -p configs/ts/tsconfig.json"
+    "tsc": "npx tsc -p configs/ts/tsconfig.json",
+    "update:packages": "node ./configs/execa/main.js"
   },
   "keywords": [
     "typescript",
@@ -42,6 +43,7 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
+    "execa": "^9.5.1",
     "husky": "^9.1.7",
     "prettier": "^3.4.1",
     "typescript": "^5.7.2"

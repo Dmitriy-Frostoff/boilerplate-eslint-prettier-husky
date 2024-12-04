@@ -156,6 +156,12 @@ Check the file for details (descriptions are inside).
 
 `Execa` is a powerful tool for `NodeJS` based projects. it gives possibility to create `CI/CD` processes and to automate routine actions (like updating and regression testing of the boilerplate / project).
 
+To install `Execa` run (as devDependencies)
+
+```bash
+npm i -D execa
+```
+
 Check the `configs/execa/main.js` script for details (it update's the boilerplate's packages and create `configs/execa/update-error.log` with result of the process).
 
 for ease of use add the command to the `package.json/scripts`:

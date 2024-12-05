@@ -195,15 +195,17 @@ import path from 'path';
  * If `update-error.log` doesn't exist one will be created beside the script
  *
  * @param {string} pathToLogFile - path (absolute is prefered) to the log file
+ * @param {string} logMessage - log message for writing into the log file
  *
  * @returns {Promise<void>}
+ * @throws Error writing log: ${error.message}
  */
-async function writeSuccessLogFile(pathToLogFile) {
+async function writeSuccessLogFile(pathToLogFile, logMessage) {
   try {
     // write logfile beside the script
     await fs.appendFile(
       pathToLogFile,
-      `[${new Date().toISOString()}]\n No errors logged.`,
+      `[${new Date().toISOString()}]\n No errors logged.\n\n${logMessage}`,
     );
     console.log(`Log has been written to the ${pathToLogFile}`);
   } catch (error) {
@@ -219,6 +221,7 @@ async function writeSuccessLogFile(pathToLogFile) {
  * @param {Error | ExecaError} error - object Error
  *
  * @returns {Promise<void>}
+ * @throws Error writing log: ${error.message}
  */
 async function writeErrorLogFile(pathToLogFile, error) {
   try {
@@ -227,7 +230,7 @@ async function writeErrorLogFile(pathToLogFile, error) {
       pathToLogFile,
       `[${new Date().toISOString()}] ${error.message}${
         error?.stderr ?? 'No stderr available.'
-      }`,
+      }\n`,
     );
     console.log(`Log has been written to the ${pathToLogFile}`);
   } catch (error) {
@@ -241,9 +244,14 @@ async function writeErrorLogFile(pathToLogFile, error) {
  *
  * @param {string[]} array - array of pathes (strings)
  *    to boilerplate's / project ' s `configs/execa/main(js|ts)`
- * @returns {Promise<void>}
+ * @returns {Promise<string[]>}
+ * @throws ExecaError occur: ${error.message} - if error was thrown from the Execa
+ * @throws ${error.message} - if error happend in another one case
  */
 async function runNodeScript(array) {
+  /** @type {string[]} */
+  const arrOfLogs = [];
+
   for (const pathToScript of array) {
     /** @type {string} */
     const pathToScriptNormalized = path.resolve(pathToScript);
@@ -256,12 +264,23 @@ async function runNodeScript(array) {
     );
     // use `cwd` option to prevent pathes problems!!!
     try {
-      await execaNode(pathToScriptNormalized, {
-        stdio: ['pipe', 'pipe', 'pipe'],
+      /**
+       * @type {import("./boilerplate-eslint-prettier-husky/node_modules/execa/index.d.ts").Result}
+       * @example
+       *    string like this:
+       *    'start checking for outdated packages...
+       *    All packages are up-to-date. Skipping npm update.
+       *    Log has been written to the
+       *      E:\Code learning\integration-playground__webpack-react-ts\configs\execa\update-error.log'
+       */
+      const { stdout } = await execaNode(pathToScriptNormalized, {
         cwd: currentScriptCWD,
         cleanup: true,
       });
-      console.log(`successfully executed!`);
+
+      arrOfLogs.push(stdout ?? 'empty stdout');
+
+      console.log(`${currentScriptCWD}: successfully executed!`);
     } catch (error) {
       if (error instanceof ExecaError) {
         console.error(`ExecaError occur: ${error.message}`);
@@ -270,6 +289,8 @@ async function runNodeScript(array) {
       }
     }
   }
+
+  return arrOfLogs;
 }
 
 /**
@@ -278,6 +299,7 @@ async function runNodeScript(array) {
  * or `update-error.log` in the boilerplate's / project's configs/execa/update-error.log
  *
  * @returns {Promise<void>}
+ * @throws An error occured: ${error.message}
  */
 async function main() {
   const currentDir = path.resolve();
@@ -286,7 +308,17 @@ async function main() {
 
   /** @type {string[]} */
   const arrOfScriptPathes = [
+    './integration-playground__webpack-react-ts/configs/execa/main.js',
+    './integration-playground__webpack-react-js/configs/execa/main.js',
+    './boilerplate-webpack-gulp-html-scss-ts-components/configs/execa/main.js',
+    './boilerplate-webpack-gulp-html-scss-js-components/configs/execa/main.js',
+    './design-patterns/configs/execa/main.js',
+    './boilerplate-codewars/configs/execa/main.js',
     './boilerplate-eslint-prettier-husky/configs/execa/main.js',
+    './boilerplate-jest/configs/execa/main.js',
+    './boilerplate-webpack-react-js/configs/execa/main.js',
+    './boilerplate-webpack-react-ts/configs/execa/main.js',
+    './rs_school/rsschool-cv/configs/execa/main.js',
   ];
 
   // clean up the log file
@@ -295,9 +327,11 @@ async function main() {
   console.log(`start running updating scripts...`);
 
   try {
-    await runNodeScript(arrOfScriptPathes);
+    /** @type {string[]} */
+    const logMessage = await runNodeScript(arrOfScriptPathes);
+
     // write logfile beside the script
-    await writeSuccessLogFile(logFile);
+    await writeSuccessLogFile(logFile, logMessage.join('\n\n'));
   } catch (error) {
     console.error(`An error occured: ${error.message}`);
 
@@ -425,4 +459,4 @@ npm i -D @commitlint/cli @commitlint/config-conventional @typescript-eslint/esli
 - [boilerplate-webpack-gulp-html-scss-js-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-js-components);
 - [boilerplate-webpack-gulp-html-scss-ts-components](https://github.com/Dmitriy-Frostoff/boilerplate-webpack-gulp-html-scss-ts-components);
 
-#### done: December 04, 2024
+#### done: December 05, 2024

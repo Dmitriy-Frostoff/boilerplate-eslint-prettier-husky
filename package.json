@@ -21,7 +21,8 @@
     "husky",
     "commitlint",
     "pre-commit",
-    "commit-msg"
+    "commit-msg",
+    "execa"
   ],
   "repository": {
     "type": "git",

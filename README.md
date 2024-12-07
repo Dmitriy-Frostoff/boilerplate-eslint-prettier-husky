@@ -205,7 +205,7 @@ async function writeSuccessLogFile(pathToLogFile, logMessage) {
     // write logfile beside the script
     await fs.appendFile(
       pathToLogFile,
-      `[${new Date().toISOString()}]\n No errors logged.\n\n${logMessage}`,
+      `[${new Date().toLocaleString()}]\n No errors logged.\n\n${logMessage}`,
     );
     console.log(`Log has been written to the ${pathToLogFile}`);
   } catch (error) {
@@ -228,8 +228,9 @@ async function writeErrorLogFile(pathToLogFile, error) {
     // write logfile beside the script
     await fs.appendFile(
       pathToLogFile,
-      `[${new Date().toISOString()}] ${error.message}${
-        error?.stderr ?? 'No stderr available.'
+      `[${new Date().toLocaleString()}] ${error.message}${
+        (error instanceof ExecaError ? error.stderr : error) ??
+        'No stderr available.'
       }\n`,
     );
     console.log(`Log has been written to the ${pathToLogFile}`);
@@ -275,6 +276,7 @@ async function runNodeScript(array) {
        */
       const { stdout } = await execaNode(pathToScriptNormalized, {
         cwd: currentScriptCWD,
+        verbose: 'full',
         cleanup: true,
       });
 
@@ -319,6 +321,7 @@ async function main() {
     './boilerplate-webpack-react-js/configs/execa/main.js',
     './boilerplate-webpack-react-ts/configs/execa/main.js',
     './rs_school/rsschool-cv/configs/execa/main.js',
+    './youtube-dl_utility/configs/execa/main.js',
   ];
 
   // clean up the log file

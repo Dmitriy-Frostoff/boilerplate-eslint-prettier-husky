@@ -47,7 +47,7 @@ async function main() {
     console.log(`Done successfully!`);
 
     // write logfile beside the script
-    await writeSuccessLogFile(logFile, '');
+    await writeSuccessLogFile(logFile, 'Done successfully!');
   } catch (error) {
     console.error(`An error occured: ${error.message}`);
 

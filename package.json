@@ -35,8 +35,8 @@
   },
   "homepage": "https://github.com/Dmitriy-Frostoff/boilerplate-eslint-prettier-husky#readme",
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.1",
@@ -44,9 +44,9 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-import": "^2.32.0",
-    "execa": "^9.6.0",
+    "execa": "^9.6.1",
     "husky": "^9.1.7",
-    "prettier": "^3.7.2",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   }
 }
